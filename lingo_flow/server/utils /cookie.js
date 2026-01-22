@@ -1,13 +1,16 @@
-import dotenv from 'dotenv';
+
+import jwt from 'jsonwebtoken';
 
 dotenv.config();
 
-export const COOKIE_NAME = process.env.COOKIE_NAME || 'auth_token';
-
-export const cookieOptions = {
-  httpOnly: true,
-  sameSite: process.env.NODE_ENV === 'production' ? 'strict' : 'lax',
-  secure: process.env.NODE_ENV === 'production',
+@@ -11,3 +12,10 @@ export const cookieOptions = {
   path: '/',
   maxAge: 1000 * 60 * 60 * 24 * 7,
+};
+
+export const setAuthCookie = (res, userId) => {
+  const token = jwt.sign({ sub: userId }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN || '7d',
+  });
+  res.cookie(COOKIE_NAME, token, cookieOptions);
 };
