@@ -17,7 +17,13 @@ import LessonView from './pages/protected/LessonView';
 import Profile from './pages/protected/Profile';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminCourses from './pages/admin/AdminCourses';
-
+  <Route element={<ProtectedRoute />}>
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/courses/:courseId' element={<CourseDetails />} />
+            <Route path='/lessons/:lessonId' element={<LessonView />} />
+            <Route path='/learn/lessons/:lessonId' element={<LessonView />} />
+            <Route path='/profile' element={<Profile />} />
+          </Route>
 export default function App() {
   return (
 @@ -36,6 +37,7 @@ export default function App() {
