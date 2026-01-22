@@ -13,7 +13,21 @@ import CourseDetails from './pages/protected/CourseDetails';
 import LessonView from './pages/protected/LessonView';
 import Profile from './pages/protected/Profile';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import LessonView from './pages/protected/LessonView';
+import Profile from './pages/protected/Profile';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminCourses from './pages/admin/AdminCourses';
 
+export default function App() {
+  return (
+@@ -36,6 +37,7 @@ export default function App() {
+
+          <Route element={<AdminRoute />}>
+            <Route path='/admin' element={<AdminDashboard />} />
+            <Route path='/admin/courses' element={<AdminCourses />} />
+          </Route>
+        </Routes>
+      </Layout>
 export default function App() {
   return (
     <BrowserRouter>
